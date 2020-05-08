@@ -1,15 +1,30 @@
 const express = require("express")
 const app = express();
 const https = require("https");
+const bodyParser = require("body-parser")
 
 
-
+app.use(bodyParser.urlencoded({extended: true}));
 
 app.get("/", (req, res) => {
-    
-    const url = "https://api.openweathermap.org/data/2.5/forecast?q=paris&appid=cdefebdefc2001cd562f7af991ab145e&units=metric"
 
-    https.get(url , (response) => {
+   
+
+    res.sendFile(__dirname + "/index.html")
+     
+
+});
+
+app.post("/" , (req, res ) => {
+    const url ="https://api.openweathermap.org/data/2.5/forecast?q="
+    const city = req.body.cityName
+    const appid = "&appid=cdefebdefc2001cd562f7af991ab145e&"
+    const units = "units=metric"
+    const urlAll = url + city + appid + units;
+    
+
+
+    https.get(urlAll , (response) => {
         console.log(response.statusCode);
 
         response.on("data",(data) => {
@@ -25,16 +40,18 @@ app.get("/", (req, res) => {
             // console.log(weatherData3);
             const city = weatherData.city.name
             console.log(temp, description);
+            res.write(`<div class="root"> `)
             res.write(`<h1>the temperatur in ${city} is </h1> `)
             res.write(`<h1> ${temp} degree celcius and its describe as ${description}</h1>`)
             res.write(`<img src="${iconUrl}" alt="icon">`);
+            res.write(`</div>`)
             res .send()
         });
     })
-   
 
 
-});
+    
+})
 
 
 
