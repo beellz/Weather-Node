@@ -8,7 +8,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 app.get("/", (req, res) => {
     // this will send index.html when request of get comes .
-    
+
 
     res.sendFile(__dirname + "/index.html")
      
@@ -49,4 +49,4 @@ app.post("/" , (req, res ) => {
 
 
 // this is app listen to the port 
- app.listen(3000, () => { console.log("app is on port 3000")});
+ app.listen(process.env.PORT || 3000, () => { console.log("app is on port 3000" + " " +  process.env.PORT )});
