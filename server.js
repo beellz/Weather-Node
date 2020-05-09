@@ -35,21 +35,22 @@ app.post("/" , (req, res ) => {
                                 const weatherData = JSON.parse(data);
                                 console.log(weatherData.list[0].main.temp);
                                 const temp = weatherData.list[0].main.temp;
-                                const description = weatherData.list[0].weather.description;
+                                const description = weatherData.list[0].weather[0].description;
                                 const icon = weatherData.list[0].weather[0].icon;
                                 const iconUrl = `http://openweathermap.org/img/wn/${icon}@2x.png`;
                                 const city = weatherData.city.name;
                                 console.log(temp, description);
                                 
-                                res.write(`<h1>the temperatur in ${city} is </h1> `);
-                                res.write(`<h1> ${temp} degree celcius and its describe as ${description}</h1>`);
+                                res.write(`<h1>The Temperatur in ${city} is </h1> `);
+                                res.write(`<h2> ${temp} Degree celcius and its describe as ${description}</h2>`);
                                 res.write(`<img src="${iconUrl}" alt="icon">`);
                                 res .send();
                         
         });
     } 
         else {
-            res.write("wrong city do refresh");
+            res.write("<h1>You Have entered wrong city </h1>");
+            res.write("<h2> Please change city Name</h2>")
             res.send();
         }
     });
