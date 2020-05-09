@@ -26,27 +26,37 @@ app.post("/" , (req, res ) => {
     
 // this url ends here .
 
+
     https.get(urlAll , (response) => {
-        console.log(response.statusCode);
-// this is the response request 
-        response.on("data",(data) => {
-            const weatherData = JSON.parse(data);
-            const temp = weatherData.list[0].main.temp;
-            const description = weatherData.list[0].weather[0].description;
-            const icon = weatherData.list[0].weather[0].icon
-            const iconUrl = `http://openweathermap.org/img/wn/${icon}@2x.png`
-            const city = weatherData.city.name
-            console.log(temp, description);
-            res.write(`<div class="root"> `)
-            res.write(`<h1>the temperatur in ${city} is </h1> `)
-            res.write(`<h1> ${temp} degree celcius and its describe as ${description}</h1>`)
-            res.write(`<img src="${iconUrl}" alt="icon">`);
-            res.write(`</div>`)
-            res .send()
+                        if (response.statusCode == 200) {
+                            console.log(response.statusCode);
+                            // this is the response request 
+                                response.on("data",(data) => {
+                                const weatherData = JSON.parse(data);
+                                console.log(weatherData.list[0].main.temp);
+                                const temp = weatherData.list[0].main.temp;
+                                const description = weatherData.list[0].weather.description;
+                                const icon = weatherData.list[0].weather[0].icon;
+                                const iconUrl = `http://openweathermap.org/img/wn/${icon}@2x.png`;
+                                const city = weatherData.city.name;
+                                console.log(temp, description);
+                                
+                                res.write(`<h1>the temperatur in ${city} is </h1> `);
+                                res.write(`<h1> ${temp} degree celcius and its describe as ${description}</h1>`);
+                                res.write(`<img src="${iconUrl}" alt="icon">`);
+                                res .send();
+                        
         });
-    })
-})
+    } 
+        else {
+            res.write("wrong city do refresh");
+            res.send();
+        }
+    });
+});
 
 
 // this is app listen to the port 
- app.listen(process.env.PORT || 3000, () => { console.log("app is on port 3000" + " " +  process.env.PORT )});
+ app.listen(process.env.PORT || 3000, () => { 
+     console.log("app is on port 3000")
+    });
