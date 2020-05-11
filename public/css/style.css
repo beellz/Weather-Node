@@ -1,0 +1,46 @@
+* {
+    margin: 0;
+    padding: 0;
+   }
+
+.data ,.form-input{
+    text-align: center;
+}
+
+.label , .form-input {
+    padding: 2rem;
+}
+
+
+.form-act {
+    height: 4em;
+    width: 4em;
+    font-size: 14px;
+}
+
+.form-input {
+    padding: 20px ;
+    font-size: 2em;
+}
+
+.input {
+    font-size:20px;
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+    font-weight: 300;
+    padding:10px;
+}
+
+.degree {
+    font-size: 8em;
+   background-image: url("images/fog.jpg")
+
+.des {
+    padding-top: 0.5em;
+    font-size: 2em;
+}
+
+.image {
+    height: 15em;
+  
+}
+

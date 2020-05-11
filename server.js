@@ -1,16 +1,22 @@
 const express = require("express")
 const app = express();
 const https = require("https");
-const bodyParser = require("body-parser")
+const bodyParser = require("body-parser");
+// const ejs = require("ejs");
 
 
 app.use(bodyParser.urlencoded({extended: true}));
+app.set('view engine', 'ejs');
 
+app.use(express.static('public'));
 app.get("/", (req, res) => {
     // this will send index.html when request of get comes .
-
-
-    res.sendFile(__dirname + "/index.html")
+    let temp = "";
+    let city = "";
+    let description = "";
+    let iconUrl = "";
+    // res.sendFile(__dirname + "/index.html")
+    res.render("weather" ,{degree: temp , city: city , description: description , icon: iconUrl} );
      
 });
 
@@ -34,17 +40,20 @@ app.post("/" , (req, res ) => {
                                 response.on("data",(data) => {
                                 const weatherData = JSON.parse(data);
                                 console.log(weatherData.list[0].main.temp);
-                                const temp = weatherData.list[0].main.temp;
+                                var temp = weatherData.list[0].main.temp;
                                 const description = weatherData.list[0].weather[0].description;
                                 const icon = weatherData.list[0].weather[0].icon;
                                 const iconUrl = `http://openweathermap.org/img/wn/${icon}@2x.png`;
                                 const city = weatherData.city.name;
                                 console.log(temp, description);
                                 
-                                res.write(`<h1>The Temperatur in ${city} is </h1> `);
-                                res.write(`<h2> ${temp} Degree celcius and its describe as ${description}</h2>`);
-                                res.write(`<img src="${iconUrl}" alt="icon">`);
-                                res .send();
+                                
+                                // res.write(`<h1>The Temperatur in ${city} is </h1> `);
+                                // res.write(`<h2> ${temp} Degree celcius and its describe as ${description}</h2>`);
+                                // res.write(`<img src="${iconUrl}" alt="icon">`);
+                                // res .send();
+                                 res.render("weather", {degree: temp , city: city , description: description , icon: iconUrl}   );
+                                // res.redirect("/");
                         
         });
     } 
