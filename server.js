@@ -46,14 +46,8 @@ app.post("/" , (req, res ) => {
                                 const iconUrl = `http://openweathermap.org/img/wn/${icon}@2x.png`;
                                 const city = weatherData.city.name;
                                 console.log(temp, description);
-                                
-                                
-                                // res.write(`<h1>The Temperatur in ${city} is </h1> `);
-                                // res.write(`<h2> ${temp} Degree celcius and its describe as ${description}</h2>`);
-                                // res.write(`<img src="${iconUrl}" alt="icon">`);
-                                // res .send();
                                  res.render("weather", {degree: temp , city: city , description: description , icon: iconUrl}   );
-                                // res.redirect("/");
+                              
                         
         });
     } 
