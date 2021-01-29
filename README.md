@@ -1,61 +1,68 @@
 # Weather-Node
 
-This application helps to check the weather from the openweather map .
-you can view this website here : 
- 
-## Contribution 
+This application helps to check the weather from the open weather map.
+
+
 ## Guidelines for a newly joined Developer
 
-  ## Our Workflow and Branching Strategy
+      ## Our Workflow and Branching Strategy
 
-    Our current branching and releasing system.
+Step 1: Picking Up an Issue.
 
-    Workflow : Forking 
-    Main Branch : Master
+It is time to pick an issue.
+That is the best way to familiarise yourself with the codebase and the contribution guidelines.
+You can view all Newcomer issues on the GitHub issue tab.
 
-    Steps to Follow:
-    * Fork the offical repository
-    * Clone the Forked repository to your local system to develop.
-    * Features need to be on each of their own branch.
-    * Changes to be made on the branchs.
-    * Test features in local system then push to Your repository.
-    * After changes Open a pull request to the offical repository.
-    * Your Pull request will be reviewed and mereged after approval.
+Important: You need to be logged in before you follow the Newcomer issues link.
 
+We follow
 
-## committing Guidelines 
+    Workflow: Forking 
+    Main Branch: Master
 
-    We have pre-commit guidelines which you need to ensure the following:
-    * Add only the relevant files to commit
-    * Have updated the document pertaining to the commit 
-    * know the relevant JIRA Issue ID 
+Before starting your first commit, check out the: JIRA ISSUE ID
 
+Step 2: Fork the repository 
 
+To fork the repository, go to the official repository click on the
+``Fork`` button from the website interface. To add it locally.
 
-    This section represents our current branching and release strategy.
+Important
 
-    Forking Workflow is what we follow here. We have one main branch which is the Master.
+You mustn't make your changes on the master branch of your forked repository.
 
-    Steps to follow:
-    * Fork this official server-side repository.
-    * Clone the forked repository to your local system.
-    * Add a git remote path of the official repository to your local clone.
-    * Each feature will have its own branch. 
-    * You should be making changes and committing them to the respective branch.
-    * When you finish building and testing the feature, you should push to your own branch on the server.
-    * Open a Pull request from your branch to the official repository.
-    * Your Pull request will be reviewed and merged after receiving the approval.
+To start you can need to create a new branch where you will work on the issue. To do that run:
+
+   ::
+
+        $ git checkout -b <branchname>
 
 
-  ## Commiting Guidelines
+step 3: Sending Your Changes
 
-     Pre-Commit Check
+    You should be making changes and committing them to the respective branch.
+    Added only the relevant files to commit
+    Have updated the documentation pertaining to the commit
+    Know the relevant Jira Issue ID 
 
-        We have a pre-commit check where you need to ensure the following:
-        * Added only the relevant files to commit
-        * Have updated the documentation pertaining to the commit
-        * Know the relevant Jira Issue ID 
+    
+    After making the changes, it is recommended that you test the code on your forked repository 
 
-     Commit Message Check
-        
-        We have a commit-msg check which ensures that you have mentioned the relevant Jira ID in the commit message.
+
+step 4: Creating a Pull Request
+
+    Now that your commit has been sent to your fork, it is time to create a ``Pull Request``. You can do this by accessing your fork on GitHub
+    and clicking ``New Pull Request``.
+
+
+    Congratulations! You have now created your first Pull Request!
+
+    Now contributors will review your work, comment on the requested improvements on your Pull Request.
+
+step 5: Waiting for Review
+
+    After creating your Pull Request, it enters the review process. You can see that's the case from the process/pending review label. Now all you have to do is wait, or let the other developers know on Gitter that you have published your changes.
+
+
+**Congratulations!** Your PR just got accepted! You're awesome.
+We highly encourage you to start other's issues after you complete your newcomer issue, as reviewing helps you to learn more.
